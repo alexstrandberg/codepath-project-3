@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class UploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    @IBOutlet weak var chooseImageButton: UIButton!
+class UploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var captionField: UITextField!
+    @IBOutlet weak var uploadButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        uploadButton.enabled = false
+        
+        captionField.delegate = self
+        
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.chooseImage))
+        singleTap.numberOfTapsRequired = 1
+        imageView.userInteractionEnabled = true
+        imageView.addGestureRecognizer(singleTap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +32,12 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func chooseImage(sender: AnyObject) {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func chooseImage() {
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
@@ -40,9 +52,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         
         // Do something with the images (based on your use case)
-        
-        chooseImageButton.imageView?.image = editedImage
         imageView.image = editedImage
+        
+        uploadButton.enabled = true
         
         // Dismiss UIImagePickerController to go back to your original view controller
         dismissViewControllerAnimated(true, completion: nil)
@@ -50,13 +62,22 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func uploadPost(sender: AnyObject) {
         if let image = imageView.image {
-            Post.postUserImage(image, withCaption: captionField.text, withCompletion: {(success, error) -> Void in
+            self.uploadButton.enabled = false
+            // Display HUD right before the request is made
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            let resizedImage = Post.resize(image, newSize: imageView.frame.size)
+            Post.postUserImage(resizedImage, withCaption: captionField.text, withCompletion: {(success, error) -> Void in
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
                     print("Upload successful")
+                    self.imageView.image = UIImage(named: "imagePlaceholder")
+                    self.captionField.text = ""
+                    
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }
+                // Hide HUD once the network request comes back (must be done on main UI thread)
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
             })
         }
     }

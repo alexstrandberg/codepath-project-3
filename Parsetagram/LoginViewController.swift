@@ -8,15 +8,20 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        signInButton.enabled = false
+        signUpButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,22 +29,69 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func validateFields() {
+        if let email = emailField.text, let password = passwordField.text {
+            if email != "" && password != "" {
+                signInButton.enabled = true
+                signUpButton.enabled = true
+            } else {
+                signInButton.enabled = false
+                signUpButton.enabled = false
+            }
+        }
+    }
+    
+    @IBAction func emailChanged(sender: UITextField) {
+        validateFields()
+    }
+    
+    @IBAction func passwordChanged(sender: UITextField) {
+        validateFields()
+    }
+    
     @IBAction func onSignIn(sender: AnyObject) {
+        self.signInButton.enabled = false
+        self.signUpButton.enabled = false
+        
+        // Display HUD right before the request is made
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
         let email = emailField.text ?? ""
         let password = passwordField.text ?? ""
         
         PFUser.logInWithUsernameInBackground(email, password: password) { (user:PFUser?, error:NSError?) -> Void in
             if let error = error {
                 print(error.localizedDescription)
+                let alertController = UIAlertController(title: "Error Logging In", message: error.localizedDescription, preferredStyle: .Alert)
+                
+                // create an OK action
+                let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                    // handle response here.
+                }
+                // add the OK action to the alert controller
+                alertController.addAction(OKAction)
+                
+                self.presentViewController(alertController, animated: true) {
+                    // optional code for what happens after the alert controller has finished presenting
+                }
             } else {
                 print("Logged in")
                 // go to feed view controller
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
+            
+            // Hide HUD once the network request comes back (must be done on main UI thread)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
     }
     
     @IBAction func onSignUp(sender: AnyObject) {
+        self.signInButton.enabled = false
+        self.signUpButton.enabled = false
+        
+        // Display HUD right before the request is made
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
         // Initialize user object
         let newUser = PFUser()
         
@@ -51,11 +103,25 @@ class LoginViewController: UIViewController {
         newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if let error = error {
                 print(error.localizedDescription)
+                let alertController = UIAlertController(title: "Error Signing Up", message: error.localizedDescription, preferredStyle: .Alert)
+                
+                // create an OK action
+                let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                    // handle response here.
+                }
+                // add the OK action to the alert controller
+                alertController.addAction(OKAction)
+                
+                self.presentViewController(alertController, animated: true) {
+                    // optional code for what happens after the alert controller has finished presenting
+                }
             } else {
                 print("User Registered Successfully")
                 // manually segue to logged in view
-                self.performSegueWithIdentifier("loginSegue", sender: nil)
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
+            // Hide HUD once the network request comes back (must be done on main UI thread)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
         }
     }
 
