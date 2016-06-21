@@ -79,7 +79,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let posts = posts {
                 // do something with the data fetched
                 self.posts = posts
-                print(posts)
             } else {
                 // handle error
                 print(error?.localizedDescription)
@@ -138,14 +137,17 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let vc = segue.destinationViewController as! PostDetailViewController
+        let cell = sender as! FeedCell
+        let indexPath = tableView.indexPathForCell(cell)
+        vc.parsetagramPost = posts![indexPath!.row]
     }
-    */
 
 }
