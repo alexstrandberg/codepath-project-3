@@ -33,8 +33,8 @@ class LoginViewController: UIViewController {
                 print(error.localizedDescription)
             } else {
                 print("Logged in")
-                // manually segue to logged in view
-                self.performSegueWithIdentifier("loginSegue", sender: nil)
+                // go to feed view controller
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
     }
