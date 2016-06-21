@@ -29,14 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         )
         
-        // check if user is logged in.
-        if PFUser.currentUser() != nil {
-            // if there is a logged in user then load the home view controller
-            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let feedViewController: FeedViewController = storyboard.instantiateViewControllerWithIdentifier("FeedViewController") as! FeedViewController
-            self.window?.rootViewController = feedViewController
-        }
-        
         return true
     }
 

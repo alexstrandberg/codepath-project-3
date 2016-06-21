@@ -4,7 +4,7 @@ Parsetagram is a photo sharing app using Parse as its backend.
 
 Submitted by: Alexander Strandberg
 
-Time spent: 2 hours spent in total
+Time spent: 4 hours spent in total
 
 ## User Stories
 
@@ -13,10 +13,10 @@ The following **required** functionality is completed:
 - [X] User can sign up to create a new account using Parse authentication
 - [X] User can log in and log out of his or her account
 - [X] The current signed in user is persisted across app restarts
-- [ ] User can take a photo, add a caption, and post it to "Instagram"
-- [ ] User can view the last 20 posts submitted to "Instagram"
-- [ ] User can pull to refresh the last 20 posts submitted to "Instagram"
-- [ ] User can load more posts once he or she reaches the bottom of the feed using infinite Scrolling
+- [X] User can take a photo, add a caption, and post it to "Instagram"
+- [X] User can view the last 20 posts submitted to "Instagram"
+- [X] User can pull to refresh the last 20 posts submitted to "Instagram"
+- [X] User can load more posts once he or she reaches the bottom of the feed using infinite Scrolling
 - [ ] User can tap a post to view post details, including timestamp and creation
 - [ ] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user.
 
@@ -55,6 +55,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- [IconMonstr - Picture 1](http://iconmonstr.com/picture-1)
 
 
 ## Notes
