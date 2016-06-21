@@ -26,6 +26,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     let refreshControl = UIRefreshControl()
+    
+    var feedType = "home"
+    
+    let CellIdentifier = "FeedCell", HeaderViewIdentifier = "FeedHeaderView"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,12 +70,24 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func performLogoutAction(sender: AnyObject) {
+        PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
+            // PFUser.currentUser() will now be nil
+        }
+        posts = []
+        performSegueWithIdentifier("showLoginSegue", sender: nil)
+    }
+    
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
         // construct PFQuery
         let query = PFQuery(className: "Post")
         query.orderByDescending("createdAt")
-        query.includeKey("author")
+        if (feedType == "home") {
+            query.includeKey("author")
+        } else { // feedType == "user"
+            query.whereKey("author", equalTo: PFUser.currentUser()!)
+        }
         query.limit = queryLimit
         
         // fetch data asynchronously
@@ -88,6 +104,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         isMoreDataLoading = false
         
         // Stop the loading indicator
+        self.loadingMoreView!.hidden = true
         self.loadingMoreView!.stopAnimating()
         
         refreshControl.endRefreshing()
@@ -103,7 +120,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FeedCell") as! FeedCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as! FeedCell
         
         cell.parsetagramPost = posts![indexPath.row]
         
@@ -127,6 +144,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // Update position of loadingMoreView, and start loading indicator
                 let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
                 loadingMoreView?.frame = frame
+                loadingMoreView!.hidden = false
                 loadingMoreView!.startAnimating()
                 
                 // ... Code to load more results ...
@@ -144,10 +162,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let vc = segue.destinationViewController as! PostDetailViewController
-        let cell = sender as! FeedCell
-        let indexPath = tableView.indexPathForCell(cell)
-        vc.parsetagramPost = posts![indexPath!.row]
+        if segue.identifier != "showLoginSegue" {
+            let vc = segue.destinationViewController as! PostDetailViewController
+            let cell = sender as! FeedCell
+            let indexPath = tableView.indexPathForCell(cell)
+            vc.parsetagramPost = posts![indexPath!.row]
+        }
     }
 
 }

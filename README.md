@@ -4,7 +4,7 @@ Parsetagram is a photo sharing app using Parse as its backend.
 
 Submitted by: Alexander Strandberg
 
-Time spent: 5 hours spent in total
+Time spent: 8 hours spent in total
 
 ## User Stories
 
@@ -17,13 +17,13 @@ The following **required** functionality is completed:
 - [X] User can view the last 20 posts submitted to "Instagram"
 - [X] User can pull to refresh the last 20 posts submitted to "Instagram"
 - [X] User can load more posts once he or she reaches the bottom of the feed using infinite Scrolling
-- [ ] User can tap a post to view post details, including timestamp and caption
-- [ ] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user.
+- [X] User can tap a post to view post details, including timestamp and caption
+- [X] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user.
 
 The following **optional** features are implemented:
 
 - [ ] Show the username and creation time for each post
-- [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse.
+- [X] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse.
 - [ ] User Profiles:
    - [ ] Allow the logged in user to add a profile photo
    - [ ] Display the profile photo with each post
@@ -55,7 +55,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- [MBProgressHUD](https://cocoapods.org/pods/MBProgressHUD) - progress indicator library
 - [IconMonstr - Picture 1](http://iconmonstr.com/picture-1)
+- [IconMonstr - Home 7](http://iconmonstr.com/home-7)
+- [IconMonstr - Photo Camera 9](http://iconmonstr.com/photo-camera-9)
+- [IconMonstr - User 6](http://iconmonstr.com/user-6)
 
 
 ## Notes

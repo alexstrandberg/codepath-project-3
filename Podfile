@@ -8,4 +8,5 @@ target 'Parsetagram' do
   # Pods for Parsetagram
   pod 'Parse'
   pod 'ParseUI'
+  pod 'MBProgressHUD'
 end

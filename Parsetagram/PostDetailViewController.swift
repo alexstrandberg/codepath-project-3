@@ -25,6 +25,9 @@ class PostDetailViewController: UIViewController {
             self.photoView.file = post["media"] as? PFFile
             self.photoView.loadInBackground()
             captionLabel.text = post["caption"] as? String
+            let dateFormat = NSDateFormatter()
+            dateFormat.dateFormat = "EEE, MMM d, h:mm a"
+            timestampLabel.text = "Uploaded: " + dateFormat.stringFromDate(post.createdAt!)
         }
     }
     

@@ -29,6 +29,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         )
         
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let homeFeedNavigationController = storyboard.instantiateViewControllerWithIdentifier("FeedNavigationController") as! UINavigationController
+        let homeFeedViewController = homeFeedNavigationController.topViewController as! FeedViewController
+        homeFeedViewController.feedType = "home"
+        homeFeedNavigationController.tabBarItem.title = "Home"
+        homeFeedNavigationController.tabBarItem.image = UIImage(named: "home")
+        
+        let uploadNavigationController = storyboard.instantiateViewControllerWithIdentifier("UploadNavigationController") as! UINavigationController
+        uploadNavigationController.tabBarItem.title = "Upload"
+        uploadNavigationController.tabBarItem.image = UIImage(named: "camera")
+        
+        let userFeedNavigationController = storyboard.instantiateViewControllerWithIdentifier("FeedNavigationController") as! UINavigationController
+        let userFeedViewController = userFeedNavigationController.topViewController as! FeedViewController
+        userFeedViewController.feedType = "user"
+        userFeedNavigationController.tabBarItem.title = "Profile"
+        userFeedNavigationController.tabBarItem.image = UIImage(named: "user")
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [homeFeedNavigationController, uploadNavigationController, userFeedNavigationController]
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
