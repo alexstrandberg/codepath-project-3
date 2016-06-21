@@ -30,6 +30,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var feedType = "home"
     
     let CellIdentifier = "FeedCell", HeaderViewIdentifier = "FeedHeaderView"
+    let tableCellHeaderHeight: CGFloat = 80
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,9 +84,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // construct PFQuery
         let query = PFQuery(className: "Post")
         query.orderByDescending("createdAt")
-        if (feedType == "home") {
-            query.includeKey("author")
-        } else { // feedType == "user"
+        query.includeKey("author")
+        if feedType == "user" {
             query.whereKey("author", equalTo: PFUser.currentUser()!)
         }
         query.limit = queryLimit
@@ -95,34 +95,57 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let posts = posts {
                 // do something with the data fetched
                 self.posts = posts
-            } else {
+           } else {
                 // handle error
                 print(error?.localizedDescription)
             }
+            
+            self.isMoreDataLoading = false
+            
+            // Stop the loading indicator
+            self.loadingMoreView!.stopAnimating()
+            refreshControl.endRefreshing()
         }
-        
-        isMoreDataLoading = false
-        
-        // Stop the loading indicator
-        self.loadingMoreView!.hidden = true
-        self.loadingMoreView!.stopAnimating()
-        
-        refreshControl.endRefreshing()
-
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let posts = posts where posts.count > 0 {
+            return 1
+        }
+        return 0
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if let posts = posts {
             return posts.count
-        } else {
-            return 0
         }
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableCellWithIdentifier(HeaderViewIdentifier) as! FeedHeaderView
+        
+        let post = posts![section]
+        
+        if let user = post["author"] as? PFUser {
+            header.usernameLabel.text = "User: " + user.username!
+        }
+        
+        let dateFormat = NSDateFormatter()
+        dateFormat.dateFormat = "EEE, MMM d, h:mm a"
+        header.timestampLabel.text = "Uploaded: " + dateFormat.stringFromDate(post.createdAt!)
+        
+        return header
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return tableCellHeaderHeight
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as! FeedCell
         
-        cell.parsetagramPost = posts![indexPath.row]
+        cell.parsetagramPost = posts![indexPath.section]
         
         return cell
     }
@@ -144,7 +167,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // Update position of loadingMoreView, and start loading indicator
                 let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
                 loadingMoreView?.frame = frame
-                loadingMoreView!.hidden = false
                 loadingMoreView!.startAnimating()
                 
                 // ... Code to load more results ...
