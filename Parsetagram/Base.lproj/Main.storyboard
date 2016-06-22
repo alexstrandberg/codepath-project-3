@@ -97,15 +97,10 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJR-Km-7vJ">
-                                                    <rect key="frame" x="300" y="4" width="60" height="63.5"/>
-                                                    <state key="normal" title="Button" image="likeButton"/>
-                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.98992425203323364" blue="0.99714666604995728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="likeButton" destination="gJR-Km-7vJ" id="7xK-TK-hby"/>
                                             <outlet property="timestampLabel" destination="lvD-Ml-AoA" id="WBc-yR-3u7"/>
                                             <outlet property="usernameLabel" destination="GRX-kO-Hv9" id="D9F-J1-Fxa"/>
                                         </connections>
@@ -188,6 +183,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJR-Km-7vJ">
+                                <rect key="frame" x="20" y="529" width="60" height="63.5"/>
+                                <state key="normal" title="Button" image="likeButton"/>
+                                <connections>
+                                    <action selector="likeButton:" destination="zO6-1v-K4b" eventType="touchUpInside" id="ZmI-Iv-9ii"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

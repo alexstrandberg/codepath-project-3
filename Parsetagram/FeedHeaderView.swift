@@ -13,6 +13,4 @@ class FeedHeaderView: UITableViewCell {
 
     @IBOutlet weak var timestampLabel: UILabel!
     
-    @IBOutlet weak var likeButton: UIButton!
-    
 }
