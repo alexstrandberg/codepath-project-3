@@ -13,11 +13,13 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var captionField: UITextField!
     @IBOutlet weak var uploadButton: UIButton!
+    @IBOutlet weak var setProfilePictureButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         uploadButton.enabled = false
+        setProfilePictureButton.enabled = false
         
         captionField.delegate = self
         
@@ -55,18 +57,20 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         imageView.image = editedImage
         
         uploadButton.enabled = true
+        setProfilePictureButton.enabled = true
         
         // Dismiss UIImagePickerController to go back to your original view controller
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func uploadPost(sender: AnyObject) {
+    func upload(asProfilePicture asProfilePicture: Bool) {
         if let image = imageView.image {
             self.uploadButton.enabled = false
+            self.setProfilePictureButton.enabled = false
             // Display HUD right before the request is made
             MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             let resizedImage = Post.resize(image, newSize: imageView.frame.size)
-            Post.postUserImage(resizedImage, withCaption: captionField.text, withCompletion: {(success, error) -> Void in
+            Post.postUserImage(resizedImage, withCaption: captionField.text, asProfilePicture: asProfilePicture, withCompletion: {(success, error) -> Void in
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
@@ -80,6 +84,13 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
             })
         }
+    }
+    
+    @IBAction func uploadPost(sender: AnyObject) {
+        upload(asProfilePicture: false)
+    }
+    @IBAction func uploadProfilePicture(sender: AnyObject) {
+        upload(asProfilePicture: true)
     }
 
     /*

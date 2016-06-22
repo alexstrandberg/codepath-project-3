@@ -17,20 +17,34 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var likesLabel: UILabel!
     
     var parsetagramPost: PFObject!
+    var profilePictureAuthor: PFUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "Post"
+        
         // Do any additional setup after loading the view.
-        if let post = parsetagramPost {
-            self.photoView.file = post["media"] as? PFFile
-            self.photoView.loadInBackground()
-            captionLabel.text = post["caption"] as? String
-            let dateFormat = NSDateFormatter()
-            dateFormat.dateFormat = "EEE, MMM d, h:mm a"
-            timestampLabel.text = "Uploaded: " + dateFormat.stringFromDate(post.createdAt!)
-            likesLabel.text = "\(post["likesCount"]) Likes"
+        
+        if parsetagramPost != nil {
+            updateView()
+        } else if let profilePictureAuthor = profilePictureAuthor {
+            // construct PFQuery
+            let query = PFQuery(className: "Post")
+            query.orderByDescending("createdAt")
+            query.whereKey("isProfilePicture", equalTo: true)
+            query.whereKey("author", equalTo: profilePictureAuthor)
+            query.limit = 1
+            
+            // fetch data asynchronously
+            query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+                if let posts = posts where posts.count > 0 {
+                    self.parsetagramPost = posts[0]
+                    self.updateView()
+                }
+            }
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,5 +57,17 @@ class PostDetailViewController: UIViewController {
         parsetagramPost["likesCount"] = likes + 1
         likesLabel.text = "\(parsetagramPost["likesCount"]) Likes"
         parsetagramPost.saveInBackground()
+    }
+
+    func updateView() {
+        if let post = parsetagramPost {
+            self.photoView.file = post["media"] as? PFFile
+            self.photoView.loadInBackground()
+            captionLabel.text = post["caption"] as? String
+            let dateFormat = NSDateFormatter()
+            dateFormat.dateFormat = "EEE, MMM d, h:mm a"
+            timestampLabel.text = "Uploaded: " + dateFormat.stringFromDate(post.createdAt!)
+            likesLabel.text = "\(post["likesCount"]) Likes"
+        }
     }
 }
