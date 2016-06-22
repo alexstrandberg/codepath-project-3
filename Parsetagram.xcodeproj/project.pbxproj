@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C13A5FC894E0B5188F2610D /* Pods_Parsetagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ADF15B644B4E9EAE5A7D3B0 /* Pods_Parsetagram.framework */; };
 		CF39A8041D18BB1E00C2B8BA /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39A8031D18BB1E00C2B8BA /* InfiniteScrollActivityView.swift */; };
 		CF39A8071D18CD2900C2B8BA /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39A8061D18CD2900C2B8BA /* PostDetailViewController.swift */; };
 		CF76E8A31D1A157000D447B1 /* likeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CF76E8A21D1A157000D447B1 /* likeButton.png */; };
+		CFAA59C51D1B080A0048A229 /* Pods_Parsetagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930A72EA9ADCC148ED890A80 /* Pods_Parsetagram.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		CFABFEF41D19EAC300626770 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = CFABFEF11D19EAC300626770 /* home.png */; };
 		CFABFEF51D19EAC300626770 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = CFABFEF21D19EAC300626770 /* camera.png */; };
 		CFABFEF61D19EAC300626770 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = CFABFEF31D19EAC300626770 /* user.png */; };
@@ -28,9 +28,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7ADF15B644B4E9EAE5A7D3B0 /* Pods_Parsetagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Parsetagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		98C6E61FDC5A4E96BB011787 /* Pods-Parsetagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parsetagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Parsetagram/Pods-Parsetagram.debug.xcconfig"; sourceTree = "<group>"; };
-		B2B9B1C7AD5C3F17E6F56DB7 /* Pods-Parsetagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parsetagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Parsetagram/Pods-Parsetagram.release.xcconfig"; sourceTree = "<group>"; };
+		68642481B6CEDFF831CDC185 /* Pods-Parsetagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parsetagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Parsetagram/Pods-Parsetagram.release.xcconfig"; sourceTree = "<group>"; };
+		8263D3BA8C2BC555C71C578C /* Pods-Parsetagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parsetagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Parsetagram/Pods-Parsetagram.debug.xcconfig"; sourceTree = "<group>"; };
+		930A72EA9ADCC148ED890A80 /* Pods_Parsetagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Parsetagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF0039801D1B028500295811 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Library/Developer/Xcode/DerivedData/Parsetagram-cvcsmcphqgeihqacqsmxqqghzpbo/Build/Products/Debug-iphoneos/Bolts/Bolts.framework"; sourceTree = "<group>"; };
+		CF0039811D1B028500295811 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/Parsetagram-cvcsmcphqgeihqacqsmxqqghzpbo/Build/Products/Debug-iphoneos/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
+		CF0039821D1B028500295811 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Library/Developer/Xcode/DerivedData/Parsetagram-cvcsmcphqgeihqacqsmxqqghzpbo/Build/Products/Debug-iphoneos/Parse/Parse.framework"; sourceTree = "<group>"; };
+		CF0039831D1B028500295811 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../Library/Developer/Xcode/DerivedData/Parsetagram-cvcsmcphqgeihqacqsmxqqghzpbo/Build/Products/Debug-iphoneos/ParseUI/ParseUI.framework"; sourceTree = "<group>"; };
+		CF0039941D1B048900295811 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Bolts.framework; path = "/Users/alexstrandberg/Library/Developer/Xcode/DerivedData/Parsetagram-cvcsmcphqgeihqacqsmxqqghzpbo/Build/Products/Debug-iphonesimulator/Bolts/Bolts.framework"; sourceTree = "<absolute>"; };
+		CF0039971D1B048900295811 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = MBProgressHUD.framework; path = "/Users/alexstrandberg/Library/Developer/Xcode/DerivedData/Parsetagram-cvcsmcphqgeihqacqsmxqqghzpbo/Build/Products/Debug-iphonesimulator/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<absolute>"; };
+		CF00399A1D1B048900295811 /* Parse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Parse.framework; path = "/Users/alexstrandberg/Library/Developer/Xcode/DerivedData/Parsetagram-cvcsmcphqgeihqacqsmxqqghzpbo/Build/Products/Debug-iphonesimulator/Parse/Parse.framework"; sourceTree = "<absolute>"; };
+		CF00399D1D1B048900295811 /* ParseUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = ParseUI.framework; path = "/Users/alexstrandberg/Library/Developer/Xcode/DerivedData/Parsetagram-cvcsmcphqgeihqacqsmxqqghzpbo/Build/Products/Debug-iphonesimulator/ParseUI/ParseUI.framework"; sourceTree = "<absolute>"; };
 		CF39A8031D18BB1E00C2B8BA /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		CF39A8061D18CD2900C2B8BA /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		CF76E8A21D1A157000D447B1 /* likeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeButton.png; sourceTree = "<group>"; };
@@ -57,18 +65,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C13A5FC894E0B5188F2610D /* Pods_Parsetagram.framework in Frameworks */,
+				CFAA59C51D1B080A0048A229 /* Pods_Parsetagram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5464937BC63ED5D42D6061B6 /* Pods */ = {
+		6F305507BCC0C47E5C0CC677 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				98C6E61FDC5A4E96BB011787 /* Pods-Parsetagram.debug.xcconfig */,
-				B2B9B1C7AD5C3F17E6F56DB7 /* Pods-Parsetagram.release.xcconfig */,
+				8263D3BA8C2BC555C71C578C /* Pods-Parsetagram.debug.xcconfig */,
+				68642481B6CEDFF831CDC185 /* Pods-Parsetagram.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -76,7 +84,11 @@
 		7D3134D32C04036AAEEF5D5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7ADF15B644B4E9EAE5A7D3B0 /* Pods_Parsetagram.framework */,
+				CF0039801D1B028500295811 /* Bolts.framework */,
+				CF0039811D1B028500295811 /* MBProgressHUD.framework */,
+				CF0039821D1B028500295811 /* Parse.framework */,
+				CF0039831D1B028500295811 /* ParseUI.framework */,
+				930A72EA9ADCC148ED890A80 /* Pods_Parsetagram.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -92,10 +104,14 @@
 		CFF0F9271D188E98002DA680 = {
 			isa = PBXGroup;
 			children = (
+				CF00399D1D1B048900295811 /* ParseUI.framework */,
+				CF00399A1D1B048900295811 /* Parse.framework */,
+				CF0039971D1B048900295811 /* MBProgressHUD.framework */,
+				CF0039941D1B048900295811 /* Bolts.framework */,
 				CFF0F9321D188E98002DA680 /* Parsetagram */,
 				CFF0F9311D188E98002DA680 /* Products */,
-				5464937BC63ED5D42D6061B6 /* Pods */,
 				7D3134D32C04036AAEEF5D5A /* Frameworks */,
+				6F305507BCC0C47E5C0CC677 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,6 +207,7 @@
 				TargetAttributes = {
 					CFF0F92F1D188E98002DA680 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = MC4M9F9CD2;
 					};
 				};
 			};
@@ -402,25 +419,39 @@
 		};
 		CFF0F9431D188E98002DA680 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98C6E61FDC5A4E96BB011787 /* Pods-Parsetagram.debug.xcconfig */;
+			baseConfigurationReference = 8263D3BA8C2BC555C71C578C /* Pods-Parsetagram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Parsetagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.Parsetagram;
+				MACH_O_TYPE = mh_execute;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexstrandberg.Parsetagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		CFF0F9441D188E98002DA680 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2B9B1C7AD5C3F17E6F56DB7 /* Pods-Parsetagram.release.xcconfig */;
+			baseConfigurationReference = 68642481B6CEDFF831CDC185 /* Pods-Parsetagram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Parsetagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.Parsetagram;
+				MACH_O_TYPE = mh_execute;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexstrandberg.Parsetagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

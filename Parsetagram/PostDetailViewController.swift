@@ -37,4 +37,11 @@ class PostDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func likeButton(sender: AnyObject) {
+        let likes = parsetagramPost["likesCount"] as! Int
+        parsetagramPost["likesCount"] = likes + 1
+        likesLabel.text = "\(parsetagramPost["likesCount"]) Likes"
+        parsetagramPost.saveInBackground()
+    }
 }
