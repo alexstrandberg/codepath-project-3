@@ -60,6 +60,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 - [IconMonstr - Home 7](http://iconmonstr.com/home-7)
 - [IconMonstr - Photo Camera 9](http://iconmonstr.com/photo-camera-9)
 - [IconMonstr - User 6](http://iconmonstr.com/user-6)
+- [IconMonstr - Facebook Like 1](http://iconmonstr.com/facebook-like-1)
 
 
 ## Notes

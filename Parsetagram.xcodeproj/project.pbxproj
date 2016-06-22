@@ -10,6 +10,7 @@
 		5C13A5FC894E0B5188F2610D /* Pods_Parsetagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ADF15B644B4E9EAE5A7D3B0 /* Pods_Parsetagram.framework */; };
 		CF39A8041D18BB1E00C2B8BA /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39A8031D18BB1E00C2B8BA /* InfiniteScrollActivityView.swift */; };
 		CF39A8071D18CD2900C2B8BA /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF39A8061D18CD2900C2B8BA /* PostDetailViewController.swift */; };
+		CF76E8A31D1A157000D447B1 /* likeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CF76E8A21D1A157000D447B1 /* likeButton.png */; };
 		CFABFEF41D19EAC300626770 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = CFABFEF11D19EAC300626770 /* home.png */; };
 		CFABFEF51D19EAC300626770 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = CFABFEF21D19EAC300626770 /* camera.png */; };
 		CFABFEF61D19EAC300626770 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = CFABFEF31D19EAC300626770 /* user.png */; };
@@ -32,6 +33,7 @@
 		B2B9B1C7AD5C3F17E6F56DB7 /* Pods-Parsetagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parsetagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Parsetagram/Pods-Parsetagram.release.xcconfig"; sourceTree = "<group>"; };
 		CF39A8031D18BB1E00C2B8BA /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		CF39A8061D18CD2900C2B8BA /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		CF76E8A21D1A157000D447B1 /* likeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeButton.png; sourceTree = "<group>"; };
 		CFABFEF11D19EAC300626770 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		CFABFEF21D19EAC300626770 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		CFABFEF31D19EAC300626770 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				CFABFEF11D19EAC300626770 /* home.png */,
 				CFABFEF21D19EAC300626770 /* camera.png */,
 				CFABFEF31D19EAC300626770 /* user.png */,
+				CF76E8A21D1A157000D447B1 /* likeButton.png */,
 				CFF55E2A1D189D550010D9BB /* imagePlaceholder.png */,
 			);
 			name = Images;
@@ -216,6 +219,7 @@
 			files = (
 				CFF0F93E1D188E98002DA680 /* LaunchScreen.storyboard in Resources */,
 				CFABFEF41D19EAC300626770 /* home.png in Resources */,
+				CF76E8A31D1A157000D447B1 /* likeButton.png in Resources */,
 				CFF55E2B1D189D550010D9BB /* imagePlaceholder.png in Resources */,
 				CFF0F93B1D188E98002DA680 /* Assets.xcassets in Resources */,
 				CFABFEF61D19EAC300626770 /* user.png in Resources */,
