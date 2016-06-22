@@ -28,6 +28,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     let refreshControl = UIRefreshControl()
     
     var feedType = "home"
+    var showingUser:PFUser?
     
     let CellIdentifier = "FeedCell", HeaderViewIdentifier = "FeedHeaderView"
     let tableCellHeaderHeight: CGFloat = 80
@@ -63,7 +64,21 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             performSegueWithIdentifier("showLoginSegue", sender: nil)
         } else {
             refreshControlAction(refreshControl)
+            if feedType == "user" {
+                if showingUser != nil {
+                    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "My Profile", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(FeedViewController.myProfilePressed))
+                    navigationItem.title = "User Profile"
+                } else {
+                    navigationItem.leftBarButtonItem = nil
+                    navigationItem.title = "My Profile"
+                }
+            }
         }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        showingUser = nil
+        navigationItem.leftBarButtonItem = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,7 +101,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         query.orderByDescending("createdAt")
         query.includeKey("author")
         if feedType == "user" {
-            query.whereKey("author", equalTo: PFUser.currentUser()!)
+            if showingUser != nil {
+                query.whereKey("author", equalTo: showingUser!)
+            } else {
+                query.whereKey("author", equalTo: PFUser.currentUser()!)
+            }
         }
         query.limit = queryLimit
         
@@ -128,12 +147,35 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let post = posts![section]
         
         if let user = post["author"] as? PFUser {
-            header.usernameLabel.text = "User: " + user.username!
+            header.usernameLabel.text = user.username!
+            // construct PFQuery
+            let query = PFQuery(className: "Post")
+            query.orderByDescending("createdAt")
+            query.whereKey("isProfilePicture", equalTo: true)
+            query.whereKey("author", equalTo: user)
+            query.limit = 1
+            
+            // fetch data asynchronously
+            query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+                if let posts = posts where posts.count > 0 {
+                    let tempImage = PFImageView()
+                    tempImage.file = posts[0]["media"] as? PFFile
+                    tempImage.loadInBackground({(image, error) in
+                        if let image = image {
+                            if !self.isMoreDataLoading {
+                                header.profileButton.setImage(image, forState: UIControlState.Normal)
+                            }
+                        }
+                    })
+                    header.profileButton.tag = section
+                    header.profileButton.addTarget(self, action: #selector(FeedViewController.showUserProfile), forControlEvents: UIControlEvents.TouchUpInside)
+                }
+            }
         }
         
         let dateFormat = NSDateFormatter()
         dateFormat.dateFormat = "EEE, MMM d, h:mm a"
-        header.timestampLabel.text = "Uploaded: " + dateFormat.stringFromDate(post.createdAt!)
+        header.timestampLabel.text = "" + dateFormat.stringFromDate(post.createdAt!)
         
         return header
     }
@@ -176,6 +218,21 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func showUserProfile(sender: UIButton) {
+        let profileNavigationController = tabBarController?.viewControllers![2] as! UINavigationController
+        let profileViewController = profileNavigationController.topViewController as! FeedViewController
+        profileViewController.feedType = "user"
+        let author = posts![sender.tag]["author"] as? PFUser
+        profileViewController.showingUser = PFUser.currentUser()!.username != author?.username ? author : nil
+        tabBarController?.selectedIndex = 2
+    }
+    
+    func myProfilePressed() {
+        showingUser = nil
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.title = "My Profile"
+        refreshControlAction(refreshControl)
+    }
 
     // MARK: - Navigation
 
@@ -183,7 +240,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
         if segue.identifier != "showLoginSegue" {
             let vc = segue.destinationViewController as! PostDetailViewController
             let cell = sender as! FeedCell

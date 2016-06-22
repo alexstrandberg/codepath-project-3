@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import ParseUI
 
 class FeedHeaderView: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
 
     @IBOutlet weak var timestampLabel: UILabel!
+    
+    @IBOutlet weak var profileButton: UIButton!
     
 }

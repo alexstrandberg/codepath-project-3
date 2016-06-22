@@ -18,37 +18,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOc-6q-ENz">
-                                <rect key="frame" x="65" y="204" width="245" height="30"/>
+                                <rect key="frame" x="65" y="178" width="245" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="passwordChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="oDd-HM-eAG"/>
                                 </connections>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sNb-RR-m0G">
+                                <rect key="frame" x="65" y="114" width="245" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                <connections>
+                                    <action selector="emailChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="H9n-O5-Qu6"/>
+                                </connections>
+                            </textField>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="Parsetagram-Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="dOP-2j-nbE">
+                                <rect key="frame" x="69" y="28" width="236" height="83"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IT3-2L-2Zd">
-                                <rect key="frame" x="65" y="294" width="245" height="39"/>
+                                <rect key="frame" x="65" y="239" width="245" height="39"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="onSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Km8-7X-PoY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3U-ZY-EkT">
-                                <rect key="frame" x="65" y="355" width="245" height="39"/>
+                                <rect key="frame" x="65" y="300" width="245" height="39"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="197-BI-QlD"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sNb-RR-m0G">
-                                <rect key="frame" x="65" y="140" width="245" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="emailChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="H9n-O5-Qu6"/>
-                                </connections>
-                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.76078431372549016" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -62,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="304.5" y="356.5"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--Parsetagram-->
         <scene sceneID="HRf-uw-7gm">
             <objects>
                 <viewController storyboardIdentifier="FeedViewController" automaticallyAdjustsScrollViewInsets="NO" id="wCz-aa-mvR" customClass="FeedViewController" customModule="Parsetagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -86,21 +89,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRX-kO-Hv9">
-                                                    <rect key="frame" x="8" y="14" width="284" height="21"/>
+                                                    <rect key="frame" x="73" y="15" width="284" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvD-Ml-AoA">
-                                                    <rect key="frame" x="8" y="44" width="284" height="21"/>
+                                                    <rect key="frame" x="73" y="44" width="284" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPi-rS-loU">
+                                                    <rect key="frame" x="8" y="8" width="57.5" height="57.5"/>
+                                                    <state key="normal" image="imagePlaceholder"/>
+                                                </button>
                                             </subviews>
+                                            <color key="backgroundColor" red="1" green="0.76078431372549016" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.98992425203323364" blue="0.99714666604995728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="profileButton" destination="ZPi-rS-loU" id="xzn-5f-W3c"/>
                                             <outlet property="timestampLabel" destination="lvD-Ml-AoA" id="WBc-yR-3u7"/>
                                             <outlet property="usernameLabel" destination="GRX-kO-Hv9" id="D9F-J1-Fxa"/>
                                         </connections>
@@ -127,7 +136,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8qa-ZS-Z58">
+                    <navigationItem key="navigationItem" title="Parsetagram" id="8qa-ZS-Z58">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="aa6-2C-aoU"/>
                         <barButtonItem key="rightBarButtonItem" style="done" id="S8S-Az-jbn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pim-LQ-XfR">
                                 <rect key="frame" x="299" y="7" width="60" height="30"/>
@@ -191,7 +201,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.76078431372549016" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -226,9 +236,14 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.76078431372549016" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="ACd-Tm-oAP">
+                        <barButtonItem key="leftBarButtonItem" title="Set Profile Picture" id="fFw-3h-k1y">
+                            <connections>
+                                <action selector="uploadProfilePicture:" destination="iRJ-oe-pKv" id="DM2-uN-OyE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" id="6xN-LW-o7Q">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lo5-cH-lNh">
                                 <rect key="frame" x="309" y="7" width="50" height="30"/>
@@ -245,6 +260,7 @@
                     <connections>
                         <outlet property="captionField" destination="MwR-aq-Rfh" id="4Ja-fj-xbf"/>
                         <outlet property="imageView" destination="e2H-um-5lm" id="bS2-Yx-7qO"/>
+                        <outlet property="setProfilePictureButton" destination="fFw-3h-k1y" id="H5d-ND-sVc"/>
                         <outlet property="uploadButton" destination="Lo5-cH-lNh" id="XSB-Gx-F2E"/>
                     </connections>
                 </viewController>
@@ -311,6 +327,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Parsetagram-Logo.png" width="472" height="166"/>
         <image name="imagePlaceholder" width="120" height="120"/>
         <image name="likeButton" width="120" height="120"/>
     </resources>

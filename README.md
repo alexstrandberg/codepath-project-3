@@ -4,7 +4,7 @@ Parsetagram is a photo sharing app using Parse as its backend.
 
 Submitted by: Alexander Strandberg
 
-Time spent: 9 hours spent in total
+Time spent: 13 hours spent in total
 
 ## User Stories
 
@@ -24,12 +24,12 @@ The following **optional** features are implemented:
 
 - [X] Show the username and creation time for each post
 - [X] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse.
-- [ ] User Profiles:
-   - [ ] Allow the logged in user to add a profile photo
-   - [ ] Display the profile photo with each post
-   - [ ] Tapping on a post's username or profile photo goes to that user's profile page
+- [X] User Profiles:
+   - [X] Allow the logged in user to add a profile photo
+   - [X] Display the profile photo with each post
+   - [X] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
-- [ ] User can like a post and see number of likes for each post in the post details screen.
+- [X] User can like a post and see number of likes for each post in the post details screen.
 - [ ] Run your app on your phone and use the camera to take the photo
 
 
@@ -46,7 +46,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](Parsetagram.gif)
+![Video Walkthrough](Parsetagram2.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -61,7 +61,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 - [IconMonstr - Photo Camera 9](http://iconmonstr.com/photo-camera-9)
 - [IconMonstr - User 6](http://iconmonstr.com/user-6)
 - [IconMonstr - Facebook Like 1](http://iconmonstr.com/facebook-like-1)
-
+- [Social Fonts - Billabong](http://social-fonts.com/instagram/billabong/)
 
 ## Notes
 
