@@ -135,6 +135,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         dateFormat.dateFormat = "EEE, MMM d, h:mm a"
         header.timestampLabel.text = "Uploaded: " + dateFormat.stringFromDate(post.createdAt!)
         
+        header.likeButton.addTarget(self, action: #selector(FeedViewController.likePost(_:)), forControlEvents: .TouchUpInside)
+        header.likeButton.tag = section
+        
         return header
     }
     
@@ -176,6 +179,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func likePost(sender: UIButton) {
+        let buttonTag = sender.tag
+        let post = posts![buttonTag]
+        let likes = post["likesCount"] as! Int
+        post["likesCount"] = likes + 1
+        post.saveInBackground()
+    }
+    
 
     // MARK: - Navigation
 
@@ -188,7 +199,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             let vc = segue.destinationViewController as! PostDetailViewController
             let cell = sender as! FeedCell
             let indexPath = tableView.indexPathForCell(cell)
-            vc.parsetagramPost = posts![indexPath!.row]
+            vc.parsetagramPost = posts![indexPath!.section]
         }
     }
 

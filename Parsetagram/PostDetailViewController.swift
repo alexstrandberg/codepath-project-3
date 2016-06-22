@@ -14,6 +14,7 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var photoView: PFImageView!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var likesLabel: UILabel!
     
     var parsetagramPost: PFObject!
     
@@ -28,6 +29,7 @@ class PostDetailViewController: UIViewController {
             let dateFormat = NSDateFormatter()
             dateFormat.dateFormat = "EEE, MMM d, h:mm a"
             timestampLabel.text = "Uploaded: " + dateFormat.stringFromDate(post.createdAt!)
+            likesLabel.text = "\(post["likesCount"]) Likes"
         }
     }
     
