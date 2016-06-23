@@ -74,7 +74,6 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
-                    print("Upload successful")
                     self.imageView.image = UIImage(named: "imagePlaceholder")
                     self.captionField.text = ""
                     
