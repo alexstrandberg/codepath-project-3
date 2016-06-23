@@ -156,7 +156,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
                 if let posts = posts where posts.count > 0 {
                     let tempImage = PFImageView()
-                    tempImage.file = posts[0]["media"] as? PFFile
+                    tempImage.file = Post(object: posts[0]).media
                     tempImage.loadInBackground({(image, error) in
                         if let image = image {
                             if !self.isMoreDataLoading {
