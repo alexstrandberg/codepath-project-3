@@ -17,7 +17,7 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
-    var parsetagramPost: PFObject!
+    var parsetagramPost: Post!
     var profilePictureAuthor: PFUser!
     
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class PostDetailViewController: UIViewController {
             // fetch data asynchronously
             query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
                 if let posts = posts where posts.count > 0 {
-                    self.parsetagramPost = posts[0]
+                    self.parsetagramPost = Post(object: posts[0])
                     self.updateView()
                 }
             }
@@ -56,26 +56,29 @@ class PostDetailViewController: UIViewController {
     }
     
     @IBAction func likeButton(sender: UIButton) {
-        let likes = parsetagramPost["likesCount"] as! Int
         if !sender.selected {
-            parsetagramPost["likesCount"] = likes + 1
+            parsetagramPost.likePost()
         } else {
-            parsetagramPost["likesCount"] = likes - 1
+            parsetagramPost.unlikePost()
         }
         sender.selected = !sender.selected
-        likesLabel.text = "\(parsetagramPost["likesCount"]) Likes"
-        parsetagramPost.saveInBackground()
+        likesLabel.text = "\(parsetagramPost.likesCount) Likes"
     }
 
     func updateView() {
         if let post = parsetagramPost {
-            self.photoView.file = post["media"] as? PFFile
-            self.photoView.loadInBackground()
-            captionLabel.text = post["caption"] as? String
+            if let media = post.media {
+                self.photoView.file = media
+                self.photoView.loadInBackground()
+            }
+            
+            captionLabel.text = post.caption
             let dateFormat = NSDateFormatter()
             dateFormat.dateFormat = "EEE, MMM d, h:mm a"
-            timestampLabel.text = "Uploaded: " + dateFormat.stringFromDate(post.createdAt!)
-            likesLabel.text = "\(post["likesCount"]) Likes"
+            if let createdAt = post.createdAt {
+                timestampLabel.text = "Uploaded: " + dateFormat.stringFromDate(createdAt)
+            }
+            likesLabel.text = "\(post.likesCount) Likes"
         }
     }
 }

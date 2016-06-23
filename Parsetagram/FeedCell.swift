@@ -13,10 +13,12 @@ import ParseUI
 class FeedCell: UITableViewCell {
     @IBOutlet weak var photoView: PFImageView!
     
-    var parsetagramPost: PFObject! {
+    var parsetagramPost: Post! {
         didSet {
-            self.photoView.file = parsetagramPost["media"] as? PFFile
-            self.photoView.loadInBackground()
+            if let media = parsetagramPost.media {
+                self.photoView.file = media
+                self.photoView.loadInBackground()
+            }
         }
     }
 }
