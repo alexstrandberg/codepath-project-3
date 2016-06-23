@@ -57,12 +57,12 @@ class PostDetailViewController: UIViewController {
     
     @IBAction func likeButton(sender: UIButton) {
         if !sender.selected {
-            parsetagramPost.likePost()
+            parsetagramPost.likePost(PFUser.currentUser()!)
         } else {
-            parsetagramPost.unlikePost()
+            parsetagramPost.unlikePost(PFUser.currentUser()!)
         }
         sender.selected = !sender.selected
-        likesLabel.text = "\(parsetagramPost.likesCount) Likes"
+        updateView()
     }
 
     func updateView() {
@@ -78,7 +78,15 @@ class PostDetailViewController: UIViewController {
             if let createdAt = post.createdAt {
                 timestampLabel.text = "Uploaded: " + dateFormat.stringFromDate(createdAt)
             }
-            likesLabel.text = "\(post.likesCount) Likes"
+            if post.likesCount != 1 {
+                likesLabel.text = "\(post.likesCount) Likes"
+            } else {
+                likesLabel.text = "1 Like"
+            }
+            
+            if post.isLikedByUser(PFUser.currentUser()!) {
+                likeButton.selected = true
+            }
         }
     }
 }

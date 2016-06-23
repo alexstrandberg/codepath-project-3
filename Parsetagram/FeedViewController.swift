@@ -99,6 +99,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // construct PFQuery
         let query = PFQuery(className: "Post")
         query.orderByDescending("createdAt")
+        query.whereKey("isProfilePicture", equalTo: false)
         query.includeKey("author")
         if feedType == "user" {
             if showingUser != nil {
@@ -164,9 +165,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                             }
                         }
                     })
-                    header.profileButton.tag = section
-                    header.profileButton.addTarget(self, action: #selector(FeedViewController.showUserProfile), forControlEvents: UIControlEvents.TouchUpInside)
                 }
+                header.profileButton.tag = section
+                header.profileButton.addTarget(self, action: #selector(FeedViewController.showUserProfile), forControlEvents: UIControlEvents.TouchUpInside)
             }
         }
         

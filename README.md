@@ -4,7 +4,7 @@ Parsetagram is a photo sharing app using Parse as its backend.
 
 Submitted by: Alexander Strandberg
 
-Time spent: 16 hours spent in total
+Time spent: 19 hours spent in total
 
 ## User Stories
 
@@ -34,7 +34,7 @@ The following **optional** features are implemented:
 
 
 The following **additional** features are implemented:
-
+- [X] Likes are unique - one cannot like a post multiple times
 - [ ] List anything else that you can get done to improve the app functionality!
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
@@ -46,7 +46,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](Parsetagram2.gif)
+![Video Walkthrough](Parsetagram3.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
