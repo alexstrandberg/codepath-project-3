@@ -62,8 +62,8 @@ class Post {
     
     var likesCount: Int {
         get {
-            if let likesCount = post["likesCount"] as? Int {
-                return likesCount
+            if let likes = post["likes"] as? [PFUser] {
+                return likes.count
             } else {
                 return 0
             }
@@ -90,18 +90,58 @@ class Post {
         }
     }
     
+    private var likes: [PFUser] {
+        get {
+            if let likes = post.objectForKey("likes") as? [PFUser] {
+                print(likes)
+                return likes
+            } else {
+                return []
+            }
+        } set {
+            post.setObject(newValue, forKey: "likes")
+            do {
+                try post.save()
+            } catch _ {
+                
+            }
+        }
+    }
+    
     init (object: PFObject) {
         post = object
     }
     
-    func likePost() {
-        post["likesCount"] = likesCount + 1
-        post.saveInBackground()
+    func isLikedByUser(user: PFUser) -> Bool {
+        for currentUser in likes {
+            do {
+                try currentUser.fetchIfNeeded()
+                if currentUser.username == user.username {
+                    return true
+                }
+            } catch _ {
+                
+            }
+            
+        }
+        return false
     }
     
-    func unlikePost() {
-        post["likesCount"] = likesCount - 1
-        post.saveInBackground()
+    func likePost(user:PFUser) {
+        likes.append(user)
+    }
+    
+    func unlikePost(user:PFUser) {
+        likes = likes.filter({ do {
+                try $0.fetchIfNeeded()
+            if $0.username != user.username {
+                return true
+            }
+            return false
+        } catch _ {
+            
+            }
+        return false})
     }
     
     class func initializeArray(objects: [PFObject]) -> [Post] {
@@ -120,7 +160,7 @@ class Post {
         post["media"] = getPFFileFromImage(image) // PFFile column type
         post["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
         post["caption"] = caption
-        post["likesCount"] = 0
+        post["likes"] = []
         post["commentsCount"] = 0
         post["isProfilePicture"] = asProfilePicture
         
