@@ -15,6 +15,7 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
     
     var parsetagramPost: PFObject!
     var profilePictureAuthor: PFUser!
@@ -22,9 +23,11 @@ class PostDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Do any additional setup after loading the view.
+        
         self.navigationItem.title = "Post"
         
-        // Do any additional setup after loading the view.
+        likeButton.setImage(UIImage(named: "likeButtonSelected"), forState: .Selected)
         
         if parsetagramPost != nil {
             updateView()
@@ -52,9 +55,14 @@ class PostDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func likeButton(sender: AnyObject) {
+    @IBAction func likeButton(sender: UIButton) {
         let likes = parsetagramPost["likesCount"] as! Int
-        parsetagramPost["likesCount"] = likes + 1
+        if !sender.selected {
+            parsetagramPost["likesCount"] = likes + 1
+        } else {
+            parsetagramPost["likesCount"] = likes - 1
+        }
+        sender.selected = !sender.selected
         likesLabel.text = "\(parsetagramPost["likesCount"]) Likes"
         parsetagramPost.saveInBackground()
     }

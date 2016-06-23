@@ -15,6 +15,7 @@
 		CFABFEF51D19EAC300626770 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = CFABFEF21D19EAC300626770 /* camera.png */; };
 		CFABFEF61D19EAC300626770 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = CFABFEF31D19EAC300626770 /* user.png */; };
 		CFABFEF81D19F4A800626770 /* FeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFABFEF71D19F4A800626770 /* FeedHeaderView.swift */; };
+		CFC0690C1D1C2B3C00817970 /* likeButtonSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = CFC0690B1D1C2B3C00817970 /* likeButtonSelected.png */; };
 		CFCB2D1D1D1B977D00503812 /* Pods_Parsetagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90FDB0F905AD3F4FA20DA925 /* Pods_Parsetagram.framework */; };
 		CFE308C31D1B123900C23E0A /* Parsetagram-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE308C21D1B123900C23E0A /* Parsetagram-Logo.png */; };
 		CFF0F9341D188E98002DA680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF0F9331D188E98002DA680 /* AppDelegate.swift */; };
@@ -49,6 +50,7 @@
 		CFABFEF21D19EAC300626770 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		CFABFEF31D19EAC300626770 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		CFABFEF71D19F4A800626770 /* FeedHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedHeaderView.swift; sourceTree = "<group>"; };
+		CFC0690B1D1C2B3C00817970 /* likeButtonSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likeButtonSelected.png; sourceTree = "<group>"; };
 		CFE308C21D1B123900C23E0A /* Parsetagram-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Parsetagram-Logo.png"; sourceTree = "<group>"; };
 		CFF0F9301D188E98002DA680 /* Parsetagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parsetagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF0F9331D188E98002DA680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				CFABFEF21D19EAC300626770 /* camera.png */,
 				CFABFEF31D19EAC300626770 /* user.png */,
 				CF76E8A21D1A157000D447B1 /* likeButton.png */,
+				CFC0690B1D1C2B3C00817970 /* likeButtonSelected.png */,
 				CFF55E2A1D189D550010D9BB /* imagePlaceholder.png */,
 				CFE308C21D1B123900C23E0A /* Parsetagram-Logo.png */,
 			);
@@ -246,6 +249,7 @@
 				CFF55E2B1D189D550010D9BB /* imagePlaceholder.png in Resources */,
 				CF4740141D1B621B0064AC19 /* appIcon.png in Resources */,
 				CFF0F93B1D188E98002DA680 /* Assets.xcassets in Resources */,
+				CFC0690C1D1C2B3C00817970 /* likeButtonSelected.png in Resources */,
 				CFABFEF61D19EAC300626770 /* user.png in Resources */,
 				CFABFEF51D19EAC300626770 /* camera.png in Resources */,
 				CFE308C31D1B123900C23E0A /* Parsetagram-Logo.png in Resources */,
