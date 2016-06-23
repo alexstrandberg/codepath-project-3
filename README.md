@@ -4,7 +4,7 @@ Parsetagram is a photo sharing app using Parse as its backend.
 
 Submitted by: Alexander Strandberg
 
-Time spent: 13 hours spent in total
+Time spent: 15 hours spent in total
 
 ## User Stories
 
@@ -62,6 +62,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 - [IconMonstr - User 6](http://iconmonstr.com/user-6)
 - [IconMonstr - Facebook Like 1](http://iconmonstr.com/facebook-like-1)
 - [Social Fonts - Billabong](http://social-fonts.com/instagram/billabong/)
+- [IconArchive - Instagram Icon](http://www.iconarchive.com/show/free-instagram-icons-by-designbolts/Active-Instagram-3-icon.html)
 
 ## Notes
 

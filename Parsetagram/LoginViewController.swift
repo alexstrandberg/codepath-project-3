@@ -20,8 +20,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        signInButton.enabled = false
-        signUpButton.enabled = false
+        toggleButtons(false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,12 +31,28 @@ class LoginViewController: UIViewController {
     func validateFields() {
         if let email = emailField.text, let password = passwordField.text {
             if email != "" && password != "" {
-                signInButton.enabled = true
-                signUpButton.enabled = true
+                toggleButtons(true)
             } else {
-                signInButton.enabled = false
-                signUpButton.enabled = false
+                toggleButtons(false)
             }
+        }
+    }
+    
+    func toggleButtons(enabled: Bool) {
+        signInButton.enabled = enabled
+        signUpButton.enabled = enabled
+        if enabled {
+            UIView.animateWithDuration(0.5, delay:0, options:UIViewAnimationOptions.TransitionFlipFromTop, animations: {
+                self.signInButton.alpha = 1
+                self.signUpButton.alpha = 1
+                }, completion: { finished in
+            })
+        } else {
+            UIView.animateWithDuration(0.5, delay:0, options:UIViewAnimationOptions.TransitionFlipFromTop, animations: {
+                self.signInButton.alpha = 0.5
+                self.signUpButton.alpha = 0.5
+                }, completion: { finished in
+            })
         }
     }
     
@@ -50,8 +65,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onSignIn(sender: AnyObject) {
-        self.signInButton.enabled = false
-        self.signUpButton.enabled = false
+        toggleButtons(false)
         
         // Display HUD right before the request is made
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -75,7 +89,6 @@ class LoginViewController: UIViewController {
                     // optional code for what happens after the alert controller has finished presenting
                 }
             } else {
-                print("Logged in")
                 // go to feed view controller
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
@@ -86,8 +99,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onSignUp(sender: AnyObject) {
-        self.signInButton.enabled = false
-        self.signUpButton.enabled = false
+        toggleButtons(false)
         
         // Display HUD right before the request is made
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -116,7 +128,6 @@ class LoginViewController: UIViewController {
                     // optional code for what happens after the alert controller has finished presenting
                 }
             } else {
-                print("User Registered Successfully")
                 // manually segue to logged in view
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
