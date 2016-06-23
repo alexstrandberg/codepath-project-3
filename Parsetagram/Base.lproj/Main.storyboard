@@ -288,6 +288,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="captionLabel" destination="cT6-kv-OSZ" id="GRh-Sg-W6J"/>
+                        <outlet property="likeButton" destination="gJR-Km-7vJ" id="vqF-Fo-XtK"/>
                         <outlet property="likesLabel" destination="fPc-lg-zPd" id="6Z3-hj-y2Z"/>
                         <outlet property="photoView" destination="uWS-Ho-fmZ" id="HUT-RC-u5W"/>
                         <outlet property="timestampLabel" destination="OhR-tB-Cny" id="IeL-Gq-1g9"/>
