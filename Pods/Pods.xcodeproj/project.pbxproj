@@ -2518,6 +2518,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E34DEBD03659D785D04379C23957F1C4 /* Bolts.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2776,6 +2777,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E34DEBD03659D785D04379C23957F1C4 /* Bolts.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
