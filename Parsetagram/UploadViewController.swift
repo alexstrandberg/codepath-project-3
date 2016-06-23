@@ -9,6 +9,12 @@
 import UIKit
 import MBProgressHUD
 
+struct Platform {
+    static var isSimulator: Bool {
+        return TARGET_OS_SIMULATOR != 0 // Use this line in Xcode 7 or newer
+    }
+}
+
 class UploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var captionField: UITextField!
@@ -44,22 +50,28 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         vc.delegate = self
         vc.allowsEditing = true
         
-        let alertController = UIAlertController(title: "Image Source", message: "Pick an image or capture a new one?", preferredStyle: .Alert)
-        
-        let libraryAction = UIAlertAction(title: "Photo Library", style: .Default) { (action) in
+        // Check to see if running on simulator - can't choose camera, so no alert is displayed
+        if Platform.isSimulator {
             vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
             self.presentViewController(vc, animated: true, completion: nil)
-        }
-        alertController.addAction(libraryAction)
-        
-        let cameraAction = UIAlertAction(title: "Take Photo", style: .Default) { (action) in
-            vc.sourceType = UIImagePickerControllerSourceType.Camera
-            self.presentViewController(vc, animated: true, completion: nil)
-        }
-        alertController.addAction(cameraAction)
-        
-        self.presentViewController(alertController, animated: true) {
-            // optional code for what happens after the alert controller has finished presenting
+        } else {
+            let alertController = UIAlertController(title: "Image Source", message: "Pick an image or capture a new one?", preferredStyle: .Alert)
+            
+            let libraryAction = UIAlertAction(title: "Photo Library", style: .Default) { (action) in
+                vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
+            alertController.addAction(libraryAction)
+            
+            let cameraAction = UIAlertAction(title: "Take Photo", style: .Default) { (action) in
+                vc.sourceType = UIImagePickerControllerSourceType.Camera
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
+            alertController.addAction(cameraAction)
+            
+            self.presentViewController(alertController, animated: true) {
+                // optional code for what happens after the alert controller has finished presenting
+            }
         }
     }
     

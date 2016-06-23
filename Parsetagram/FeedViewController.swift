@@ -19,7 +19,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var queryLimit = 20
     var isMoreDataLoading = false
     
-    var posts: [PFObject]? {
+    var posts: [Post] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -113,7 +113,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
             if let posts = posts {
                 // do something with the data fetched
-                self.posts = posts
+                self.posts = Post.initializeArray(posts)
            } else {
                 // handle error
                 print(error?.localizedDescription)
@@ -128,25 +128,22 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let posts = posts where posts.count > 0 {
+        if posts.count > 0 {
             return 1
         }
         return 0
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let posts = posts {
-            return posts.count
-        }
-        return 0
+        return posts.count
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCellWithIdentifier(HeaderViewIdentifier) as! FeedHeaderView
         
-        let post = posts![section]
+        let post = posts[section]
         
-        if let user = post["author"] as? PFUser {
+        if let user = post.author {
             header.usernameLabel.text = user.username!
             // construct PFQuery
             let query = PFQuery(className: "Post")
@@ -175,7 +172,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let dateFormat = NSDateFormatter()
         dateFormat.dateFormat = "EEE, MMM d, h:mm a"
-        header.timestampLabel.text = "" + dateFormat.stringFromDate(post.createdAt!)
+        if let createdAt = post.createdAt {
+            header.timestampLabel.text = "" + dateFormat.stringFromDate(createdAt)
+        }
         
         return header
     }
@@ -187,7 +186,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as! FeedCell
         
-        cell.parsetagramPost = posts![indexPath.section]
+        cell.parsetagramPost = posts[indexPath.section]
         
         return cell
     }
@@ -222,7 +221,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let profileNavigationController = tabBarController?.viewControllers![2] as! UINavigationController
         let profileViewController = profileNavigationController.topViewController as! FeedViewController
         profileViewController.feedType = "user"
-        let author = posts![sender.tag]["author"] as? PFUser
+        let author = posts[sender.tag].author
         profileViewController.showingUser = PFUser.currentUser()!.username != author?.username ? author : nil
         tabBarController?.selectedIndex = 2
     }
@@ -244,7 +243,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             let vc = segue.destinationViewController as! PostDetailViewController
             let cell = sender as! FeedCell
             let indexPath = tableView.indexPathForCell(cell)
-            vc.parsetagramPost = posts![indexPath!.section]
+            vc.parsetagramPost = posts[indexPath!.section]
         }
     }
 
