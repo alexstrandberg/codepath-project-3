@@ -106,7 +106,7 @@
             </objects>
             <point key="canvasLocation" x="304.5" y="356.5"/>
         </scene>
-        <!--Parsetagram-->
+        <!--Feed View Controller-->
         <scene sceneID="HRf-uw-7gm">
             <objects>
                 <viewController storyboardIdentifier="FeedViewController" automaticallyAdjustsScrollViewInsets="NO" id="wCz-aa-mvR" customClass="FeedViewController" customModule="Parsetagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -189,7 +189,7 @@
                             <constraint firstItem="kA8-Zt-wBK" firstAttribute="leading" secondItem="uvg-XA-9BX" secondAttribute="leading" id="aV7-Mm-PrS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Parsetagram" id="8qa-ZS-Z58">
+                    <navigationItem key="navigationItem" id="8qa-ZS-Z58">
                         <barButtonItem key="backBarButtonItem" title="Back" id="aa6-2C-aoU"/>
                         <barButtonItem key="rightBarButtonItem" style="done" id="S8S-Az-jbn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pim-LQ-XfR">

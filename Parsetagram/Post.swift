@@ -93,7 +93,6 @@ class Post {
     private var likes: [PFUser] {
         get {
             if let likes = post.objectForKey("likes") as? [PFUser] {
-                print(likes)
                 return likes
             } else {
                 return []
@@ -122,7 +121,6 @@ class Post {
             } catch _ {
                 
             }
-            
         }
         return false
     }
@@ -140,7 +138,7 @@ class Post {
             return false
         } catch _ {
             
-            }
+        }
         return false})
     }
     

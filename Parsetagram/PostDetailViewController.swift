@@ -25,8 +25,6 @@ class PostDetailViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        self.navigationItem.title = "Post"
-        
         likeButton.setImage(UIImage(named: "likeButtonSelected"), forState: .Selected)
         
         if parsetagramPost != nil {
@@ -47,7 +45,6 @@ class PostDetailViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,12 +53,22 @@ class PostDetailViewController: UIViewController {
     }
     
     @IBAction func likeButton(sender: UIButton) {
-        if !sender.selected {
+        sender.selected = !sender.selected
+        sender.transform = CGAffineTransformMakeScale(0.05, 0.05)
+        UIView.animateWithDuration(0.5,
+                                   delay: 0,
+                                   usingSpringWithDamping: 0.2,
+                                   initialSpringVelocity: 6.0,
+                                   options: UIViewAnimationOptions.AllowUserInteraction,
+                                   animations: {
+                                    sender.transform = CGAffineTransformIdentity
+            }, completion: nil)
+        if sender.selected {
             parsetagramPost.likePost(PFUser.currentUser()!)
         } else {
             parsetagramPost.unlikePost(PFUser.currentUser()!)
         }
-        sender.selected = !sender.selected
+        
         updateView()
     }
 
