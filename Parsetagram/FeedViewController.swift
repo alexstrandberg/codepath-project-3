@@ -37,6 +37,16 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // Set up Navigation Bar logo for Home View
+        if feedType == "home" {
+            let logo: UIImage = UIImage(named: "Parsetagram-Logo.png")!
+            let imageSize: CGSize = CGSizeMake(114, 40)
+            let marginX: CGFloat = (navigationController!.navigationBar.frame.size.width / 2) - (imageSize.width / 2)
+            let imageView = UIImageView(frame: CGRectMake(marginX, 0, imageSize.width, imageSize.height))
+            //imageView.contentMode = .ScaleAspectFit
+            imageView.image = logo
+            navigationController!.navigationBar.addSubview(imageView)
+        }
         
         tableView.delegate = self
         tableView.dataSource = self

@@ -4,7 +4,7 @@ Parsetagram is a photo sharing app using Parse as its backend.
 
 Submitted by: Alexander Strandberg
 
-Time spent: 19 hours spent in total
+Time spent: 20 hours spent in total
 
 ## User Stories
 
@@ -35,18 +35,19 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 - [X] Likes are unique - one cannot like a post multiple times
+- [X] UI Improvements - App Logo on Navigation Controller, Like button bounces after pressing it
 - [ ] List anything else that you can get done to improve the app functionality!
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Best practices to avoid repeating code in several places
+2. How to make the app look good on all devices with AutoLayout
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](Parsetagram3.gif)
+![Video Walkthrough](Parsetagram4.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -67,6 +68,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 ## Notes
 
 Describe any challenges encountered while building the app.
+- App Signing Issue - App Wouldn't Install on Devices (CocoaPods issue) - [Link](http://stackoverflow.com/questions/32730312/reason-no-suitable-image-found)
 
 ## License
 
