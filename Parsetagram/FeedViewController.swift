@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import ParseUI
+import MBProgressHUD
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -18,6 +19,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     let queryChunk = 20
     var queryLimit = 20
     var isMoreDataLoading = false
+    var isFirstLoad = true
     
     var posts: [Post] = [] {
         didSet {
@@ -105,6 +107,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func refreshControlAction(refreshControl: UIRefreshControl) {
+        if isFirstLoad {
+            // Display HUD right before the request is made
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        }
         
         // construct PFQuery
         let query = PFQuery(className: "Post")
@@ -135,6 +141,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             // Stop the loading indicator
             self.loadingMoreView!.stopAnimating()
             refreshControl.endRefreshing()
+            if self.isFirstLoad {
+                self.isFirstLoad = false
+                // Hide HUD once the network request comes back (must be done on main UI thread)
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+            }
         }
     }
     
